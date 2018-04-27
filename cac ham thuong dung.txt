@@ -1,0 +1,15 @@
+﻿strip_tab(); xóa các thẻ html
+preg_match($regex,$string,$result) : hàm kiểm tra chuỗi thoã mãn $regex;
+preg_replace($bienregex, $bienthaythe, $str);
+
+$bienregex, = "/ [\" \' \`] /" ;
+$bienthaythe = '&quot' ;
+
+
+Hàm chỉnh date: 2010-04-19 18:31:27 -> dd/mm/yyyy
+date("d/m/Y", strtotime($str));
+
+
+Hàm lấy một chuỗi con nằm trong chuỗi $str bắt đầu từ ký tự thứ $start và chiều dài $length.
+substr( $string,  $start, $length );
+substr( 'freetuts.net',  0, 8);
