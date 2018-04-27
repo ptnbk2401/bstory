@@ -2,14 +2,15 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT']. '/templates/admin/inc/leftbar.php'; ?>
 <div id="page-wrapper">
     <div id="page-inner">
-        <div class="row"> 
+    <div class="row"> 
             <div class="col-md-12"> 
-                <span class="label label-primary" ><a href="/admin/story/?p=story" style="color: white; font-size: 13px; " >Danh Sách Truyện</a></span>
-                <span class="label label-default"><a href="/admin/story/quanlibaidang.php?p=story" style="color: white; font-size: 13px; " >Quản lí Bài Đăng</a></span>
+                <ul class="nav nav-tabs">
+                    <li ><a href="/admin/story/?p=story"  >Danh Sách Truyện</a></li>
+                    <li class="active"><a  href="/admin/story/quanlibaidang.php?p=story" >Quản lí Bài Đăng</a></li>
+                </ul>
             </div>
         </div>
         <!-- /. ROW  -->
-        <hr />
 
 <?php   
     $hienthi = 5;
@@ -92,7 +93,7 @@
                                                 </div>
                                                 
                                             </td>
-                                            <td class="center" style="text-align: center;"><?php echo $cmt; ?><br> <a class="text-dark" href="/admin/story/xembinhluan.php?p=story&id=<?php echo $idStory ?>"> Xem</a></td>
+                                            <td class="center" style="text-align: center;"> <a class="text-dark" href="/admin/story/xembinhluan.php?p=story&id=<?php echo $idStory ?>"> <?php echo $cmt; ?></a></td>
                                             
                                         </tr>
 

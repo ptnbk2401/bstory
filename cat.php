@@ -51,11 +51,14 @@
                                 $hinhanh = $arStory['picture']; 
                                 $ngaydang = date("d-m-Y h:m A ", strtotime($arStory['created_at']));
                                 $luotdoc = $arStory['counter']; 
+                                $tentruyen = utf8ToLatin($story_name);
+                                $urltruyen = "/baiviet/".$tentruyen."-".$story_id.".html";  
+                                $urlcat = "/cat/".$tendm."-".$id;                  
 
                     ?>
                     <div class="row-item row">
                         <div class="col-md-3">
-                            <a href="/detail.php?id=<?php echo $story_id; ?>">
+                            <a href="<?php echo $urltruyen; ?>">
                                 <br>
                                 <img width="180px" height="180px" class="img-rounded" src="/files/images/<?php echo $hinhanh; ?>" alt="">
                             </a>
@@ -66,7 +69,7 @@
                                 <i>Ngày đăng: <?php echo $ngaydang; ?> - Lượt đọc: <?php echo $luotdoc; ?></i>
                             </small>
                             <p class="text-muted"><?php echo $mota; ?></p>
-                            <a class="btn btn-primary" href="/detail.php?id=<?php echo $story_id; ?>">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
+                            <a class="btn btn-primary" href="<?php echo $urltruyen; ?>">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
                         </div>
                         <div class="break"></div>
                     </div>

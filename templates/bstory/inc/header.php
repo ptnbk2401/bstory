@@ -1,5 +1,7 @@
 <?php session_start(); ?>
 <?php require_once $_SERVER['DOCUMENT_ROOT'].'/util/ConnectDBUtil.php' ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/util/Utf8ToLatinUtil.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +16,15 @@
     <!-- Custom CSS -->
     <link href="/templates/bstory/css/shop-homepage.css" rel="stylesheet">
     <link href="/templates/bstory/css/my.css" rel="stylesheet">
+    <style>
+        body{
+            background-color: #e0e0e0;
+        }
+        .row {
+            background-color: #fff;
+        }
+      
+    </style>
 </head>
 
 <body>
@@ -29,16 +40,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/?p=home">BSTORY</a>
+                <a class="navbar-brand" href="/trang-chu">BSTORY</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/gioithieu.php">Giới thiệu</a>
+                        <a href="/gioi-thieu">Giới thiệu</a>
                     </li>
                     <li>
-                        <a href="/lienhe.php">Liên hệ</a>
+                        <a href="/lien-he">Liên hệ</a>
                     </li>
                 </ul>
 
@@ -78,4 +89,4 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container noidung">

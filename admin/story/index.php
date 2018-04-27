@@ -4,13 +4,16 @@
     <div id="page-inner">
         <div class="row"> 
             <div class="col-md-12"> 
-                <span class="label label-default" ><a href="/admin/story/?p=story" style="color: white; font-size: 13px; " >Danh Sách Truyện</a></span>
-                <span class="label label-primary"><a href="/admin/story/quanlibaidang.php?p=story" style="color: white; font-size: 13px; " >Quản lí Bài Đăng</a></span>
+                <ul class="nav nav-tabs">
+                    <li class="active" ><a  href="/admin/story/?p=story"  >Danh Sách Truyện</a></li>
+                    <li ><a  href="/admin/story/quanlibaidang.php?p=story" >Quản lí Bài Đăng</a></li>
+                </ul>
             </div>
         </div>
+        
         <!-- /. ROW  -->
 
-        <hr />
+
 <?php   
     $hienthi = 5;
     $sql = "SELECT * FROM story";
@@ -117,8 +120,8 @@
                                                 $image = $arStory['picture'];
                                                 $counter = $arStory['counter'];
                                                 $public = $arStory['public'];
-                                                $urldel = "/admin/story/delete.php?p=story&idStory={$idStory}&img={$image}";
-                                                $urledit = "/admin/story/edit.php?p=story&idStory={$idStory}&img={$image}";
+                                                $urldel = "/admin/story/delete.php?p=story&page={$page}&idStory={$idStory}&img={$image}";
+                                                $urledit = "/admin/story/edit.php?p=story&page={$page}&idStory={$idStory}&img={$image}";
 
                                        ?>
                                         <tr class="<?php echo $cl?> gradeX">

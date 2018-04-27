@@ -5,9 +5,12 @@
         $idtruyen = $_GET['id'];
         $sql = "SELECT * FROM story 
                 INNER JOIN slide ON story.slide_id = slide.ID 
-                WHERE story_id = {$idtruyen}";
+                WHERE story_id = {$idtruyen} AND public = 1";
         // echo $sql; die();        
         $query      = $conn->query($sql);
+        if($query->num_rows < 1) {
+         header('location: /trang-chu');
+        }
         $arStory    = mysqli_fetch_assoc($query);
         $idtruyen = $arStory['story_id'];
         $tentruyen  = $arStory['name'];
@@ -19,6 +22,7 @@
         $cat_id     = $arStory['cat_id']; 
         $luotdoc    = $arStory['counter']; 
         $sobinhluan	= $arStory['so_comment']; 
+                 
        
        // Lượt đọc
             if(isset($_SESSION["luotdoc"][$idtruyen])){
@@ -31,7 +35,7 @@
             $query = $conn->query($sql);
         }
         else {
-        header('location: /index1.php?p=home');
+        header('location: /trang-chu');
         }
 
 
@@ -89,8 +93,8 @@
 			                </div>
 			                <div class="modal-body text-center" width="150px">
 			                    <form method="post" action="javascript:void(0)">
-				                    <input  class="form-control" type="text" id="fullnamecmt" required value="" placeholder="Họ Tên"><br/>
-				                    <input  class="form-control"  type="email" id="emailcmt" required value="" placeholder="Email"><br/>
+				                    <input  class="form-control" type="text" id="fullnamecmt"  value="" autofocus placeholder="Họ Tên"><br/>
+				                    <input  class="form-control"  type="email" id="emailcmt"  value="" placeholder="Email"><br/>
 				                    <input type="submit" name="login" value="Tiếp tục" class="btn btn-default " onclick="return guicmt(<?php echo $idtruyen;?>,<?php echo $sobinhluan;?>)" data-dismiss="modal" >
 				                </form>    
 			                </div>
@@ -139,29 +143,35 @@
 			     var name    = $("#fullnamecmt").val();
 			     var email   = $("#emailcmt").val();
 			     var noidung = $("#noidung").val();
+                 if(name != ""){
+                    $.ajax({
+			        url: '/templates/bstory/ajax/comment.php',
+                    type: 'POST',
+                    cache: false,
+                    data: {aname: name, aemail: email, amessage: noidung, aid: idStory,socmt: socmt},
+                    success: function(data){
+                    
+                    if(data){
+                        $("#cmt").html(data);
+                        $("#fullnamecmt").val("");
+                        $("#emailcmt").val("");
+                        $("#noidung").val("");
+                        
+                    }
+                    else alert("Rỗng");
+                    //alert($("#cmt").html())
+                    
+                    },
+                    error: function (){
+                    alert('Có lỗi xảy ra');
+                    }
+                    });
+                 }
+                 else {
+                    $("#fullnamecmt").attr("placeholder","Không để trống trường này");
+                 }
 
-			    $.ajax({
-			    url: '/templates/bstory/ajax/comment.php',
-			    type: 'POST',
-			    cache: false,
-			    data: {aname: name, aemail: email, amessage: noidung, aid: idStory,socmt: socmt},
-			    success: function(data){
-			     
-			      if(data){
-			        $("#cmt").html(data);
-			        $("#fullnamecmt").val("");
-			        $("#emailcmt").val("");
-			        $("#noidung").val("");
-			        $("#thongbaocmt").val("Bình luận đã được đăng!");
-			      }
-			      else alert("Rỗng");
-			      //alert($("#cmt").html())
-			     
-			    },
-			    error: function (){
-			      alert('Có lỗi xảy ra');
-			    }
-			    });
+			   
 			    return false;
 			  }
 			</script>
@@ -179,19 +189,21 @@
                 while ($arSOther = mysqli_fetch_assoc($query)) {
                     $idSother  = $arSOther['story_id'];
                     $tenSother  = $arSOther['name'];
-                    $hinhanh    = $arSOther['picture'];                        
+                    $hinhanh    = $arSOther['picture'];     
+                    $tentruyen = utf8ToLatin($tenSother);
+                    $urltruyen = "/baiviet/".$tentruyen."-".$idSother.".html";                         
 
 
                 ?>
                         <!-- item -->
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-md-5">
-                                <a href="/detail.php?id=<?php echo  $idSother ; ?>">
+                                <a href="<?php echo  $urltruyen ; ?>">
                                     <img class="img-circle" src="/files/images/<?php echo $hinhanh; ?>" width="70px" height="70px">
                                 </a>
                             </div>
                             <div class="col-md-7 h5">
-                                <a href="/detail.php?id=<?php echo  $idSother ; ?>" class="text-warning" ><b><?php echo $tenSother; ?></b></a>
+                                <a href="<?php echo  $urltruyen ; ?>" class="text-warning" ><b><?php echo $tenSother; ?></b></a>
                             </div>
                             <!-- <p><?php echo $mota; ?>...</p> -->
                             <div class="break"></div>
@@ -212,19 +224,21 @@
                     while ($arSHot = mysqli_fetch_assoc($query)) {
                         $idSHot  = $arSHot['story_id'];
                         $tenSHot  = $arSHot['name'];
-                        $hinhanhSHot    = $arSHot['picture'];                        
+                        $hinhanhSHot    = $arSHot['picture'];       
+                        $tentruyen = utf8ToLatin($tenSHot);
+                        $urltruyen = "/baiviet/".$tentruyen."-".$idSHot.".html";                      
 
 
                 ?>  
                         <!-- item -->
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-md-5">
-                                <a href="/detail.php?id=<?php echo  $idSHot ; ?>">
+                                <a href="<?php echo  $urltruyen ; ?>">
                                     <img class="img-circle" src="/files/images/<?php echo $hinhanhSHot; ?>" width="70px" height="70px">
                                 </a>
                             </div>
                             <div class="col-md-7">
-                                  <a href="/detail.php?id=<?php echo  $idSHot ; ?>" class="text-warning" ><b><?php echo $tenSHot; ?></b></a>
+                                  <a href="<?php echo  $urltruyen ; ?>" class="text-warning" ><b><?php echo $tenSHot; ?></b></a>
                             </div>
                           <!--   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <div class="break"></div>

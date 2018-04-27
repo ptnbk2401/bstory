@@ -45,29 +45,34 @@
 				                  $ngaydang 	= date("d/m/Y", strtotime($arStory['created_at']));
 				                  $luotdoc 		= $arStory['counter'];
 				                  $mota 		= $arStory['preview_text']; 
-				                  $hinhanh 		= $arStory['picture'];
+								  $hinhanh 		= $arStory['picture'];
+								  $tendanhmuc = utf8ToLatin($danhmuc);
+								  $urlcat = "/cat/".$tendanhmuc."-".$cat_id;   
+								  $truyen = utf8ToLatin($tentruyen);
+                        		  $urltruyen = "/baiviet/".$truyen."-".$idtruyen.".html";   
+								  
 
      					?>
 	            		
 					    <div class="row-item row">
 		                	<div class="h3 col-md-12" >
 		                		<div class="col-md-12 ">
-			                		<a href="/detail.php?p=cat&id=<?php echo  $idtruyen ; ?>" class="text-warning"><?php echo $tentruyen; ?></a> <br>
+			                		<a href="<?php echo  $urltruyen ; ?>" class="text-warning"><?php echo $tentruyen; ?></a> <br>
 			                	</div>
 		                	</div>
 		                		
 		                	<div class="col-md-12 border-right">
 		                		<div class="col-md-3">
-			                        <a href="/detail.php?p=cat&id=<?php echo  $idtruyen ; ?>">
+			                        <a href="<?php echo  $urltruyen ; ?>">
 			                            <img class="img-rounded" src="/files/images/<?php echo  $hinhanh; ?>" alt="" width="157px" height="157px" >
 			                        </a>
 			                    </div>
 
 			                    <div class="col-md-9">
-			                        <h4>Thể loại: <a href="/cat1.php?p=cat&id=<?php echo $cat_id ?>"><?php echo $danhmuc; ?></a></h4>
+			                        <h4>Thể loại: <a href="<?php echo  $urlcat ; ?>"><?php echo $danhmuc; ?></a></h4>
 			                        <small class="text-success"><i>Ngày đăng: <?php echo $ngaydang; ?> - Lượt đọc: <?php echo $luotdoc; ?></i></small>
 			                        <p><?php echo $mota; ?></p>
-			                        <a class="btn btn-primary" href="/detail.php?id=<?php echo  $idtruyen ; ?>">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
+			                        <a class="btn btn-primary" href="<?php echo  $urltruyen ; ?>">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
 								</div>
 
 		                	</div>
@@ -87,7 +92,7 @@
             <div class="col-lg-12">
                 <ul class="pagination">
                     <li>
-        <?php if($page > 1) { ?><a href="/index.php?page=<?php echo $page - 1 ;?>">&laquo;</a><?php } ?>
+        <?php if($page > 1) { ?><a href="/trang-chu/Trang-<?php echo $page - 1 ;?>">&laquo;</a><?php } ?>
                     </li>
 		<?php    
 			for($i=1; $i<=$sotrang;$i++){
@@ -95,7 +100,7 @@
 		?> 
 				
 					<li class="active">
-						<a href="/index.php?page=<?php echo $i ;?>"><?php echo $i ;?></a> 
+						<a href="/trang-chu/Trang-<?php echo $i ;?>"><?php echo $i ;?></a> 
 					</li>
 
 		<?php 
@@ -103,14 +108,14 @@
 				else {
 		?>
 					<li>
-			            <a href="/index.php?page=<?php echo $i ;?>"><?php echo $i ;?></a>
+			            <a href="/trang-chu/Trang-<?php echo $i ;?>"><?php echo $i ;?></a>
 			        </li>
 		<?php
 				}
 			}
 		?>
                     <li>
-          <?php if($page < $sotrang) { ?><a href="/index.php?page=<?php echo $page + 1 ;?>">&raquo;</a><?php } ?>
+          <?php if($page < $sotrang) { ?><a href="/trang-chu/Trang-<?php echo $page + 1 ;?>">&raquo;</a><?php } ?>
                     </li>
                 </ul>
             </div>

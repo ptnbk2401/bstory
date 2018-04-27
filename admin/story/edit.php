@@ -16,6 +16,9 @@
    //      }
    //      return 0;
    //  }
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }
     if(isset($_GET['idStory'])){
         $image = $_GET['img'];
         $idStory = $_GET['idStory'];
@@ -54,7 +57,7 @@
             $bienthaythe = '&quot;' ;
             $name = preg_replace($bienregex, $bienthaythe, $name);
             $mota = preg_replace($bienregex, $bienthaythe, $mota);
-                             
+            $check_sua_anh = 0;                 
             if(!empty($_FILES['hinhanh']['tmp_name'])) {
                 $image_name = $_FILES['hinhanh']['name'];
                 $arname = explode('.',$image_name);
@@ -65,22 +68,23 @@
                 $filePath = $_SERVER['DOCUMENT_ROOT'].'/files/images/'.$file_name;
                 $result = move_uploaded_file($filetmp,$filePath) or die("Upload không thành công"); //('đường dẫn tạm','đường dẫn lưu file');  
                 $sql = "UPDATE story SET name = '{$name}', preview_text = '{$mota}',detail_text = '{$chitiet}', cat_id= {$Catid}, picture='{$file_name}', public='{$public}', Tacgia = '{$tacgia}',slide_id = '{$slideid}'    WHERE story_id = {$idStory} ";  
-
+                $check_sua_anh = 1;
             }
             else { 
+                $check_sua_anh = 0;
                 $sql = "UPDATE story SET name = '{$name}', preview_text = '{$mota}',detail_text = '{$chitiet}', cat_id= {$Catid}, public='{$public}', Tacgia = '{$tacgia}',slide_id = '{$slideid}'  WHERE story_id = {$idStory} ";      
             }
          
             $query = $conn->query($sql);
             if($query){
                 // Xóa hình ảnh cũ.
-                if(!empty($image)){
+                if(!empty($image) && $check_sua_anh==1 ){
                     if($image != "story-default.jpg") unlink($_SERVER['DOCUMENT_ROOT'].'/files/images/'.$image);
                  } 
-                 header('location: /admin/story/?p=story&tb=Sửa truyện thành công!');
+                 header('location: /admin/story/?p=story&page='.$page.'&tb=Sửa truyện thành công!');
             } 
             else {
-                header('location: /admin/story/?p=story&tb=Sửa truyện thất bại!');
+                header('location: /admin/story/?p=story&page='.$page.'&tb=Sửa truyện thất bại!');
             }           
 
             }
