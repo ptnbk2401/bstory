@@ -11,6 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title> Đọc truyện cùng Bstory</title>
+	<link rel="SHORTCUT ICON" href="/files/icon-n.jpg" type="image/x-icon" />
+
     <!-- Bootstrap Core CSS -->
     <link href="/templates/bstory/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->

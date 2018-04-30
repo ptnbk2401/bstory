@@ -6,10 +6,12 @@
 <div id="page-wrapper">
     <div id="page-inner">
         <div class="row"> 
-            <div class="col-md-12"> 
-                 <h2>Trang Quản lí Liên Hệ</h2>
+            <div class="col-md-12">
+				<div class="alert alert-info h3 text-center">
+					<strong>Quản lý Liên Hệ</strong>
+				</div>
             </div>
-        </div>
+        </div> 
         <!-- /. ROW  -->
         <hr />
 <!--  -->

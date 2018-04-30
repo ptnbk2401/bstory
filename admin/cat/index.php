@@ -4,7 +4,9 @@
     <div id="page-inner">
         <div class="row"> 
             <div class="col-md-12">
-                <h2>Quản lý danh mục</h2>
+				<div class="alert alert-info h3 text-center">
+					<strong>Quản lý danh mục</strong>
+				</div>
             </div>
         </div> 
         <!-- /. ROW  -->

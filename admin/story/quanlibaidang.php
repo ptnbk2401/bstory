@@ -28,18 +28,25 @@
 
 
 ?>
-        <div class="row">
-            <div class="col-md-12">
-               <?php 
-                    if(isset($_GET['tb'])){
 
-                        echo "<span style='color: green'> {$_GET['tb']}</span>";
-                    }   
-
-                ?>
-            </div>
-        </div>
         <div class="row">
+			<div class="col-md-12" style="margin: 20px 0">
+				<?php 
+					if(isset($_GET['tb'])){
+						
+				?>
+				
+					<div class="alert alert-success">
+						<a href="" class="close" title="Close" data-dismiss="alert" aria-label="close">&times;</a>				
+					<?php
+							echo "<strong>Success!</strong> {$_GET['tb']}";
+						}   
+
+					?>
+					</div>
+			</div>
+				
+			
             <div class="col-md-12">
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">

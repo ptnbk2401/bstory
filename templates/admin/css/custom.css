@@ -25,7 +25,7 @@ table th {
 
 #page-wrapper {
     padding: 15px 15px;
-    min-height: 600px;
+    min-height: 800px;
     background:#F3F3F3;
    
 }
@@ -34,7 +34,7 @@ table th {
     margin:10px 20px 10px 0px;
     background-color:#fff!important;
     padding:10px;
-    min-height:1200px;
+    min-height:800px;
 }
 
 .text-center {
@@ -361,7 +361,7 @@ line-height: 1.428571429;
      #page-wrapper{
                margin: 0 0 0 260px;
         padding: 15px 30px;
-        min-height: 1200px;
+        min-height: 600px;
 		
     }
 	

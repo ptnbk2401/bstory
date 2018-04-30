@@ -61,6 +61,7 @@
                                     </div>
 
                                     <button type="submit" name="submit" class="btn btn-success btn-md">Lưu</button>
+                                    <a class="btn btn-info btn-md" role="button" href="/admin/cat/?p=cat">Quay lại</a>
                                     <span id="Thongbao" style="color: green"><?php if(isset($tb)) echo $tb; ?></span>
                                 </form>
                             </div>

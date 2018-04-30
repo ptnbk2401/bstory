@@ -71,6 +71,7 @@
                                     </div>
 
                                     <button type="submit" name="submit" class="btn btn-success btn-md">Thêm</button>
+                                    <a class="btn btn-info btn-md" role="button" href="/admin/user/?p=user">Quay lại</a>
                                     <span style="color: green"><?php if(isset($tb)) echo $tb; ?></span>
                                 </form>
                             </div>

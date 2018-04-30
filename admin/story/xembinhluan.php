@@ -14,6 +14,9 @@
         <?php 
             if(isset($_GET['id'])){
                 $idStory = $_GET['id'];
+				$select = "SELECT * FROM story WHERE story_id = {$idStory}";
+				$query1 = $conn->query($select);
+				$arStory = mysqli_fetch_assoc($query1);
                 $sql = "SELECT * FROM comment WHERE story_id = {$idStory}";
                 // echo $sql; die();
                 $query = $conn->query($sql);
@@ -23,6 +26,23 @@
             }
 
         ?>
+		<div class="col-md-12" style="margin: 20px 0">
+			<h3 class="h3 text-center text-info" ><?php echo $arStory['name'] ?></h3>
+			<?php 
+				if(isset($_GET['tb'])){
+					
+			?>
+			
+				<div class="alert alert-success">
+					<a href="" class="close" title="Close" data-dismiss="alert" aria-label="close" >&times;</a>				
+				<?php
+						echo "<strong>Success!</strong> {$_GET['tb']}";
+					}   
+
+				?>
+				</div>
+			
+		
         <div class="table-responsive">
             <div class="row">
                 
@@ -59,8 +79,11 @@
                 </tbody>
             </table>
         </div>
+        <h3 class="h3 test-info"><a class="btn btn-info" role="button" href="/admin/story/quanlibaidang.php?p=story">Quay lại</a></h3>
     </div>
     </div>
+</div>
+</div>
 </div>
 <!-- /. PAGE INNER  -->
 <?php require_once $_SERVER['DOCUMENT_ROOT']. '/templates/admin/inc/footer.php'; ?>

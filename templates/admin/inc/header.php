@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AdminCP | VinaEnter Edu</title>
+	<link rel="SHORTCUT ICON" href="/files/icon-n.jpg" type="image/x-icon" />
     <!-- BOOTSTRAP STYLES-->
     <link href="/templates/admin/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -47,9 +48,12 @@
                 <a class="navbar-brand" href="/admin/">VinaEnter Edu</a>
             </div>
             <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Xin chào, <b><?php echo $arUserLogin['fullname'] ;?></b> &nbsp; <a href="/admin/login.php?logout=true" class="btn btn-danger square-btn-adjust">Đăng xuất</a> </div>
+                        padding: 15px 50px 5px 50px;
+                        float: right;
+                        font-size: 16px;">
+ Xin chào, <b><?php echo $arUserLogin['fullname'] ;?></b> &nbsp; 
+ <a href="/admin/login.php?logout=true" class="btn btn-danger square-btn-adjust">Đăng xuất</a> 
+ </div>
         </nav>
         <!-- /. NAV TOP  -->
 

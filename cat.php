@@ -53,7 +53,7 @@
                                 $luotdoc = $arStory['counter']; 
                                 $tentruyen = utf8ToLatin($story_name);
                                 $urltruyen = "/baiviet/".$tentruyen."-".$story_id.".html";  
-                                $urlcat = "/cat/".$tendm."-".$id;                  
+                                              
 
                     ?>
                     <div class="row-item row">

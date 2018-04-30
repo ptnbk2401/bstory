@@ -9,11 +9,17 @@
             <div class="col-md-12"> 
                 <?php 
                     $adminlogin =  $arUserLogin['admin'];
+                    $adusername =  $arUserLogin['username'];
                     if($adminlogin == 0){
 
                 ?>
-                    <h2>Bạn không có quyền truy cập Trang Quản Lí User</h2>
-                    <img src="/files/hot-girl.jpg" alt="hot-girl.jpg" title="Người yêu Em đẹp không!!" width=100%>
+				 
+				<div class="alert alert-danger h3 text-center col-md-6">
+					<strong>Stop!</strong> Bạn không có quyền truy cập.
+				</div>
+				<div class="col-md-6">
+					<img class="img-thumbnail" src="/files/nene.jpg" width="100%" alt="hot-girl.jpg" >
+				</div>
             </div>
         </div>
                 <?php 
@@ -21,7 +27,9 @@
                     else{
 
                 ?>
-                 <h2>Trang Quản Lí User</h2>
+                 <div class="alert alert-info h3 text-center">
+					<strong>Quản lý USER</strong>
+				</div>
             </div>
         </div>
         <!-- /. ROW  -->
@@ -82,9 +90,10 @@
                                             <td><?php if($admin==1) echo "Admin"; else echo "Nhân viên" ; ?></td>
                                             <td class="center">
                                                 <a href="<?php echo $urledit ?>" title="" class="btn btn-primary"><i class="fa fa-edit "></i> Sửa</a>
-                                                <?php if($username != 'admin'){ ?>
+
+                                            <?php if($username != 'admin'){ ?>
                                                 <a href="<?php echo $urldel ?>" title="" onclick="return confirm('Bạn có chắc muốn xóa!!')" class="btn btn-danger"><i class="fa fa-pencil"></i> Xóa</a>
-                                                <?php } ?>
+                                            <?php } ?>
                                                 
                                             </td>
                                         </tr>

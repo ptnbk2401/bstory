@@ -9,7 +9,7 @@
         </div>
         <!-- /. ROW  -->
 <?php 
-    
+    $adusername =  $arUserLogin['username'];
     if(isset($_GET['idUser'])){
        $idUser = $_GET['idUser'];
        $sql = "SELECT * FROM users WHERE id= {$idUser}";
@@ -19,6 +19,11 @@
        $pw = $arUser['password'];
        $fn = $arUser['fullname'];
        $ad = $arUser['admin'];
+
+       if($adusername != 'admin' && $un == 'admin'){
+            header('location: /admin/user/?p=user&tb=Không có quyền Edit admin');
+            die();
+       }
     }
 
     if(isset($_POST['submit'])){
@@ -103,6 +108,7 @@
                                         </div>
                                   <?php  } ?>
                                     <button type="submit" name="submit" class="btn btn-success btn-md">Lưu</button>
+                                    <a class="btn btn-info btn-md" role="button" href="/admin/user/?p=user">Quay lại</a>
                                     <span style="color: green"><?php if(isset($tb)) echo $tb; ?></span>
                                 </form>
                             </div>

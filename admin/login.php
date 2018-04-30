@@ -7,6 +7,7 @@
 	<title>Login</title>
 	<link href="/templates/admin/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="/templates/admin/js/bootstrap.min.js"></script>
+	<link rel="SHORTCUT ICON" href="/files/icon-n.jpg" type="image/x-icon" />
 	
 	<style type="text/css">
 		.vertical-offset-100{

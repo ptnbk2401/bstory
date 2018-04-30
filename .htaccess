@@ -1,0 +1,31 @@
+RewriteEngine On
+RewriteBase /
+
+#code rewrite
+##contact.php => lien-he
+RewriteRule lien-he /lienhe.php
+
+#code rewrite
+##gioithieu.php => gioi-thieu
+RewriteRule gioi-thieu /gioithieu.php
+
+
+
+##cat.php/?p=cat&id=21 => tinh-ban-31
+RewriteRule cat/(.*)-([0-9]*) /cat.php/?p=cat&id=$2
+
+##/detail.php?p=cat&id=64 => /detail/em-di-choi-39.html
+RewriteRule baiviet/(.*)-([0-9]*)\.html /detail.php?p=cat&id=$2
+
+
+##index.php?page=3 => trang-chu/Trang-3
+RewriteRule trang-chu/(.*)-([0-9]*) /index.php?page=$2
+
+
+
+##/?p=home => trang-chu
+RewriteRule trang-chu /index.php/?p=home
+
+
+##Lỗi 404 không tìm thấy trang
+ErrorDocument 404 /inc/404_redirect.php

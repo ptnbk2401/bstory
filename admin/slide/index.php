@@ -7,7 +7,9 @@
     <div id="page-inner">
         <div class="row"> 
             <div class="col-md-12"> 
-                 <h2> Quản Lí Slide Hình Ảnh</h2>
+                <div class="alert alert-info h3 text-center">
+					<strong>Quản lý Slide</strong>
+				</div>
             </div>
         </div>
         <!-- /. ROW  -->
